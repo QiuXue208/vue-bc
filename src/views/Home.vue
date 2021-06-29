@@ -1,26 +1,24 @@
 <template>
   <div class="home">
-    此时的onpiece: {{ onepiece }} <br>
-    此时的msg: {{ msg }} <br><br>
-    <button @click="setName">设置name</button>
     <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <DynamicComp />
   </div>
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
+import DynamicComp from '@/components/DynamicComp.vue'
 
 export default {
   name: 'Home',
   data() {
     return {
-      name:'Kobe',
-      msg:''
     }
   },
   components: {
-    HelloWorld
+    HelloWorld,
+    DynamicComp
   },
   computed: {
     onepiece: {
@@ -31,7 +29,7 @@ export default {
         //当你给onepiece设置值的时候set就就会调用
         this.msg = newVal+'is the greatest basketball player';
       }
-    }
+    },
   },
   beforeCreate() {
     console.log('beforeCreate')
