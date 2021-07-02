@@ -22,8 +22,12 @@
     data() {
       return {
         currentTab: "Posts",
-        tabs: ["Posts", "Archive"]
+        tabs: ["Posts", "Archive"],
+        obj: { a: 1 }
       }
+    },
+    mounted() {
+      console.log(this.$data)
     },
     components: {
       TabPosts,

@@ -1,7 +1,13 @@
 <template>
   <div class="home">
     <HelloWorld msg="Welcome to Your Vue.js App"/>
-    <DynamicComp />
+    <DynamicComp ref="dynamic" />
+    <Child>
+      <p>p1</p>
+      <p>p2</p>
+      <h1 slot="header">header</h1>
+      <h5 slot="footer">footer</h5>
+    </Child>
   </div>
 </template>
 
@@ -9,6 +15,7 @@
 // @ is an alias to /src
 import HelloWorld from '@/components/HelloWorld.vue'
 import DynamicComp from '@/components/DynamicComp.vue'
+import Child from '@/components/Render.vue'
 
 export default {
   name: 'Home',
@@ -16,9 +23,15 @@ export default {
     return {
     }
   },
+  mounted() {
+    this.$nextTick(function() {
+      console.log(this.$refs.dynamic)
+    })
+  },
   components: {
     HelloWorld,
-    DynamicComp
+    DynamicComp,
+    Child
   },
   computed: {
     onepiece: {
@@ -30,27 +43,6 @@ export default {
         this.msg = newVal+'is the greatest basketball player';
       }
     },
-  },
-  beforeCreate() {
-    console.log('beforeCreate')
-  },
-  created() {
-    console.log('created')
-  },
-  beforeMount() {
-    console.log('beforeMount')
-  },
-  mounted() {
-    console.log('mounted')
-  },
-  beforeUpdate() {
-    console.log('beforeUpdate')
-  },
-  updated() {
-    console.log('updated')
-  },
-  destroyed() {
-    console.log('destroyed')
   },
   methods: {
     setName(){
